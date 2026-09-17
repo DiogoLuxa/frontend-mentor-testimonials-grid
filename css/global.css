@@ -1,0 +1,6 @@
+body {
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  color: var(--color-neutral-black);
+  background: var(--color-neutral-off-white);
+}

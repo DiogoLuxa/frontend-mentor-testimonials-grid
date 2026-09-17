@@ -1,0 +1,48 @@
+:root {
+  /* Colors */
+  --color-primary-purple-50: hsl(260, 100%, 95%);
+  --color-primary-purple-300: hsl(264, 82%, 80%);
+  --color-primary-purple-500: hsl(263, 55%, 52%);
+
+  --color-neutral-white: hsl(0, 0%, 100%);
+  --color-neutral-off-white: hsl(300, 5%, 96%);
+  --color-neutral-grey-100: hsl(214, 17%, 92%);
+  --color-neutral-grey-200: hsl(0, 0%, 81%);
+  --color-neutral-grey-400: hsl(224, 10%, 45%);
+  --color-neutral-grey-500: hsl(217, 19%, 35%);
+  --color-neutral-dark-blue: hsl(219, 29%, 14%);
+  --color-neutral-black: hsl(0, 0%, 7%);
+
+  /* Font family */
+  --font-primary: "Barlow Semi Condensed", sans-serif;
+
+  /* Font size */
+  --fs-body: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+
+  /* Font weight */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Layout */
+  --container-width: 75rem;
+  --container-padding: 1.5rem;
+}
