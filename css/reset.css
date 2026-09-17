@@ -38,13 +38,3 @@ select {
 button {
   cursor: pointer;
 }
-
-ul,
-ol {
-  list-style: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}

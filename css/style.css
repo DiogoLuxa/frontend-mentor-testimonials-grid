@@ -1,9 +1,121 @@
 @import "./reset.css";
 @import "./tokens.css";
 @import "./global.css";
-@import "./utilities.css";
 
-/* Attribution */
+.container {
+  display: grid;
+  place-items: center;
+
+  padding: 4.5625rem 2.1875rem;
+}
+
+/* =====================
+Cards
+===================== */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+
+  box-shadow: 40px 60px 50px -47px hsla(217, 19%, 35%, 0.24);
+}
+
+/* =====================
+Daniel
+===================== */
+
+.card--daniel {
+  color: var(--color-primary-purple-50);
+  background-color: var(--color-primary-purple-500);
+}
+
+.card--daniel .card__name,
+.card--daniel .card__highlight {
+  color: var(--color-neutral-white);
+}
+
+/* =====================
+Jonathan
+===================== */
+
+.card--jonathan {
+  color: var(--color-neutral-grey-100);
+  background-color: var(--color-neutral-grey-500);
+}
+
+.card--jonathan .card__name,
+.card--jonathan .card__highlight {
+  color: var(--color-neutral-white);
+}
+
+.card--jonathan .card__status {
+  color: var(--color-neutral-grey-300);
+}
+
+/* =====================
+Jeanette
+===================== */
+
+.card--jeanette {
+  color: var(--color-neutral-grey-400);
+  background-color: var(--color-neutral-white);
+}
+
+.card--jeanette .card__name,
+.card--jeanette .card__highlight {
+  color: var(--color-neutral-grey-500);
+}
+
+/* =====================
+Patrick
+===================== */
+
+.card--patrick {
+  color: var(--color-neutral-grey-100);
+  background-color: var(--color-neutral-dark-blue);
+}
+
+.card--patrick .card__name,
+.card--patrick .card__status {
+  color: var(--color-neutral-white);
+}
+
+.card--patrick .card__highlight {
+  color: var(--color-neutral-grey-200);
+}
+
+/* =====================
+Kira
+===================== */
+
+.card--kira {
+  color: var(--color-neutral-grey-400);
+  background-color: var(--color-neutral-white);
+}
+
+.card--kira .card__name,
+.card--kira .card__highlight {
+  color: var(--color-neutral-grey-500);
+}
+
+.card--kira .card__status {
+  color: var(--color-neutral-grey-300);
+}
+
+/* =====================
+Attribution
+===================== */
+
 .attribution {
   font-size: 0.6875rem;
   text-align: center;

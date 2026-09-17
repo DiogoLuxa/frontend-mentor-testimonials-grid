@@ -1,6 +1,6 @@
 body {
   font-family: var(--font-primary);
-  font-size: var(--fs-body);
+  font-size: var(--fs-sm);
   color: var(--color-neutral-black);
-  background: var(--color-neutral-off-white);
+  background-color: var(--color-neutral-off-white);
 }
