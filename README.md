@@ -1,104 +1,158 @@
-# Frontend Mentor - Testimonials grid section
+# Frontend Mentor - Testimonials grid section solution
 
-![Design preview for the Testimonials grid section coding challenge](./preview.jpg)
+This is a solution to the [Testimonials grid section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/testimonials-grid-section-Nnw6J7Un7). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this testimonials grid section and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the site depending on their device's screen size
 
-### Want some support on the challenge? 
+The five cards stack in a single column on mobile. From `768px` they move onto a two-column grid: Daniel and Patrick span the full width, Jonathan and Jeanette sit side by side, and Kira stays on the last row. From `1024px` the layout becomes the familiar desktop mosaic — four columns and two rows — with Daniel spanning two columns, Patrick spanning two on the row below, and Kira stretching the full height of the last column.
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Preview of the testimonials grid section](./screenshot.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- [Live Site URL](https://diogoluxa.github.io/frontend-mentor-testimonials-grid/)
+- [Solution URL](https://github.com/DiogoLuxa/frontend-mentor-testimonials-grid)
 
-If you would like the Figma design file to gain experience using professional tools and build more accurate projects faster, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### Built with
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+- Semantic HTML5 (`main`, `article`, `header`, `blockquote`)
+- CSS custom properties for colors, type, spacing, and radius tokens
+- Flexbox for card internals (avatar row, stacked copy)
+- CSS Grid for the five-card layout at each breakpoint
+- Mobile-first workflow, with layout changes at `768px` and `1024px`
+- BEM-style class names (`card`, `card__quote`, `card--daniel`)
+- [Barlow Semi Condensed](https://fonts.google.com/specimen/Barlow+Semi+Condensed) from Google Fonts
 
-## Using AI coding assistants
+### What I learned
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+The interesting part of this challenge is not styling five similar cards — it is **placing the same component on different grid lines** as the screen grows.
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+**One card, five modifiers.** Every testimonial shares the same structure: avatar, name, highlight, quote. Background and text color are the only visual differences, so a base `.card` plus modifiers (`card--daniel`, `card--kira`, …) kept the CSS from repeating five almost-identical blocks.
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+```html
+<article class="card card--daniel">
+  <header class="card__header">
+    <img class="card__image" src="./images/image-daniel.jpg" alt="" />
+    <div class="card__author">
+      <h2 class="card__name">Daniel Clifford</h2>
+      <p class="card__status">Verified Graduate</p>
+    </div>
+  </header>
+  <p class="card__highlight">I received a job offer mid-course…</p>
+  <blockquote class="card__quote">
+    <p class="card__quote-text">" I was an EMT for many years… "</p>
+  </blockquote>
+</article>
+```
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+Avatars sit next to a heading that already names the person, so `alt=""` tells screen readers to skip a redundant photo. The longer quote lives in `<blockquote>` because it is a citation, not just another paragraph.
 
-## Building your project
+**Grid line placement, not five different layouts.** On desktop the grid is four columns and two rows. `grid-area` maps each card onto those lines: Daniel covers columns 1–2 on row 1, Patrick covers columns 2–3 on row 2, and Kira spans both rows in column 4.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+```css
+@media (min-width: 1024px) {
+  .cards {
+    grid-template: repeat(2, auto) / repeat(4, 1fr);
+  }
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+  .card--daniel {
+    grid-area: 1 / 1 / 2 / 3;
+  }
 
-## Deploying your project
+  .card--kira {
+    grid-area: 1 / 4 / -1 / -1;
+  }
+}
+```
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+Tablet needed a different map: two columns and four rows, with Daniel, Patrick, and Kira stretching across the full width. That is why the placement rules are rewritten at `768px` instead of trying to force one grid to work everywhere.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+**Decorative quotation marks without extra HTML.** Daniel’s card uses a `::before` pseudo-element and the SVG as a background image. `isolation: isolate` creates a stacking context on the card, so `z-index: -1` on the quote graphic stays **above the purple background** and **behind the text**.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+```css
+.card--daniel {
+  position: relative;
+  isolation: isolate;
+}
 
-## Create a custom `README.md`
+.card--daniel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 4rem;
+  width: 104px;
+  height: 102px;
+  background-image: url("../images/bg-pattern-quotation.svg");
+  z-index: -1;
+}
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+**Design tokens in `:root`.** Pulling the style-guide colors, type scale, and spacing into custom properties meant I could tweak a value once instead of hunting through the stylesheet.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+```css
+:root {
+  --color-primary-purple-500: hsl(263, 55%, 52%);
+  --color-neutral-dark-blue: hsl(219, 29%, 14%);
+  --font-primary: "Barlow Semi Condensed", sans-serif;
+  --space-xl: 2rem;
+}
+```
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+### Continued development
 
-## Submitting your solution
+I want to keep practicing:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+- CSS Grid placement (`grid-area`, line numbers, and `grid-template-areas`) until mosaic layouts are something I can sketch before I write CSS
+- Decorative images with pseudo-elements, stacking contexts, and `isolation`
+- Layouts that hold up from about `320px` up, not only the 375 / 768 / 1440 design widths
+- A small Git / GitHub Pages habit, so the live URL is ready before I submit on Frontend Mentor
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+### Useful resources
 
-## Sharing your solution
+- [CSS-Tricks: A Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) — visual reference for rows, columns, and spanning items, which is the whole desktop layout
+- [MDN: `grid-area`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area) — why `1 / 1 / 2 / 3` places a card on specific grid lines
+- [MDN: `isolation`](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) — why `isolate` keeps `z-index: -1` from disappearing behind the page
+- [MDN: `::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) — decorative quotation marks without extra markup
+- [MDN: `<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote) — the right element for a pulled quote
+- [Frontend Mentor style guide for this challenge](./style-guide.md) — colors, type, and layout widths
 
-There are multiple places you can share your solution:
+### AI Collaboration
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+I used [Cursor](https://cursor.com/) as a learning partner on this project, not as a “write the whole solution” tool.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+- **What I used it for:** filling this README from the finished HTML and CSS, and talking through layout ideas while building
+- **What worked well:** describing _why_ Grid line placement and a stacking context fit this design (one card component, different positions, decorative quote behind the copy) instead of pasting a finished stylesheet
+- **What I still did myself:** writing `index.html` and the CSS files, matching the Figma / design files, and choosing the mobile, tablet, and desktop breakpoints
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+## Author
 
-## Got feedback for us?
+- Frontend Mentor - [@DiogoLuxa](https://www.frontendmentor.io/profile/DiogoLuxa)
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+## Acknowledgments
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+Thanks to [Frontend Mentor](https://www.frontendmentor.io) for the challenge, the style guide, and the design files.
