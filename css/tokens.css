@@ -18,7 +18,9 @@
   --font-primary: "Barlow Semi Condensed", sans-serif;
 
   /* Font size */
+  --fs-xs: 0.6875rem;
   --fs-sm: 0.8125rem;
+  --fs-lg: 1.25rem;
 
   /* Font weight */
   --fw-regular: 400;
@@ -26,12 +28,18 @@
   --fw-semibold: 600;
   --fw-bold: 700;
 
+  /* Line height */
+  --lh-110: 110%;
+  --lh-120: 120%;
+  --lh-140: 140%;
+
   /* Spacing */
+  --space-md: 1rem;
+  --space-xl: 2rem;
+
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
-  --space-md: 1rem;
   --space-lg: 1.5rem;
-  --space-xl: 2rem;
   --space-2xl: 3rem;
 
   /* Radius */
