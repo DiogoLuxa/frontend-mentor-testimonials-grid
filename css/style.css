@@ -6,6 +6,7 @@
   display: grid;
   place-items: center;
 
+  min-height: 100vh;
   padding: 4.5625rem 2.1875rem;
 }
 
@@ -17,6 +18,9 @@ Cards
   display: grid;
   grid-template-columns: 1fr;
   row-gap: var(--space-xl);
+
+  width: 100%;
+  max-width: 70rem;
 }
 
 .card {
@@ -183,13 +187,8 @@ Attribution
 }
 
 @media (min-width: 768px) {
-  .container {
-    padding: 5.1875rem 3.75rem;
-  }
-
   .cards {
     grid-template: repeat(4, auto) / repeat(2, 1fr);
-    align-items: center;
     gap: var(--space-xl);
   }
 
@@ -197,6 +196,7 @@ Attribution
     position: relative;
 
     grid-area: 1 / 1 / 2 / -1;
+    align-self: stretch;
 
     isolation: isolate;
   }
@@ -206,7 +206,7 @@ Attribution
 
     position: absolute;
     top: 0;
-    left: 23.5rem;
+    right: 10.5rem;
 
     width: 104px;
     height: 102px;
@@ -223,9 +223,42 @@ Attribution
 
   .card--patrick {
     grid-area: 3 / 1 / 4 / -1;
+    align-self: stretch;
   }
 
   .card--kira {
     grid-area: 4 / 1 / -1 / -1;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    grid-template: repeat(2, auto) / repeat(4, 1fr);
+    gap: var(--space-lg) var(--space-xl);
+  }
+
+  .card--daniel {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  .card--daniel::before {
+    right: 4rem;
+  }
+
+  .card--jonathan {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+
+  .card--jeanette {
+    grid-area: 2 / 1 / -1 / 2;
+  }
+
+  .card--patrick {
+    grid-area: 2 / 2 / -1 / 4;
+  }
+
+  .card--kira {
+    grid-area: 1 / 4 / -1 / -1;
   }
 }
